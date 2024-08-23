@@ -11,10 +11,13 @@ struct ContentView: View {
     var body: some View {
         
         HStack{
-            CardView(isFaceUp: true)
-            CardView()
-            CardView()
-            CardView()
+            CardView(content: "🇺🇸", isFaceUp: true)
+            CardView(content: "🇩🇴", isFaceUp: true)
+            CardView(content: "🇨🇴", isFaceUp: true)
+            CardView(content: "🇪🇸", isFaceUp: true)
+            CardView(content: "🇨🇴", isFaceUp: true)
+            CardView(content: "🇪🇸", isFaceUp: true)
+            
         }
         .foregroundStyle(.orange)
         .padding()
@@ -28,6 +31,7 @@ struct ContentView: View {
 
 
 struct CardView: View {
+    let content: String
     @State var isFaceUp: Bool = false
     
     var body: some View {
@@ -36,7 +40,7 @@ struct CardView: View {
             if isFaceUp {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
-                Text("Hey").font(.largeTitle)
+                Text(content).font(.largeTitle)
             }else{
                 base.fill()
             }
