@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+//    var viewModel: EmojiMemoryGame
+    
+    let countries = ["🇺🇸","🇩🇴","🇨🇴","🇪🇸","🇦🇷","🇨🇦","🇨🇺","🇪🇨","🇧🇷","🇸🇻","🇺🇾","🇵🇪","🇯🇵","🇲🇽","🇵🇦",]
+    
     var body: some View {
         
-        HStack{
-            CardView(content: "🇺🇸", isFaceUp: true)
-            CardView(content: "🇩🇴", isFaceUp: true)
-            CardView(content: "🇨🇴", isFaceUp: true)
-            CardView(content: "🇪🇸", isFaceUp: true)
-            CardView(content: "🇨🇴", isFaceUp: true)
-            CardView(content: "🇪🇸", isFaceUp: true)
-            
+        var grid = [GridItem(.adaptive(minimum: 85))]
+        
+        LazyVGrid(columns: grid){
+            ForEach(countries.indices, id: \.self) { index in
+                CardView(content: countries[index], isFaceUp: true)
+                    .aspectRatio(2/3, contentMode: .fit)
+            }
         }
         .foregroundStyle(.orange)
-        .padding()
+//        .padding()
         
     }
 }
