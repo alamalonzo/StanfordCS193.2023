@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
-    var viewModel: EmojiMemoryGame = EmojiMemoryGame()
+    //by the ViewModel
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
-        ScrollView{
-            countries
+        VStack{
+            ScrollView{
+                countries
+            }
+            .padding()
         }
-        .padding()
+        Button("Shuffle") {
+            viewModel.shuffle()
+        }
     }
-    
     
     var countries: some View {
         let grid = [GridItem(.adaptive(minimum: 85), spacing: 0)]
@@ -60,6 +65,6 @@ struct CardView: View {
 
 
 #Preview {
-    EmojiMemoryGameView()
+    EmojiMemoryGameView(viewModel: EmojiMemoryGame())
 }
 

@@ -33,6 +33,10 @@ struct MemoryGame<CountryContent> {
         
     }
     
+    mutating func shuffle() {
+        countries.shuffle()
+    }
+    
     struct Country {
         var isFaceUp = true
         var isMatched = false

@@ -7,13 +7,8 @@
 
 import SwiftUI
 
-//
-//func createCountryContent(forPairAtIndex index: Int) -> String {
-//    return ["🇺🇸","🇩🇴","🇨🇴","🇪🇸","🇦🇷","🇨🇦","🇨🇺","🇪🇨","🇧🇷","🇸🇻","🇺🇾","🇵🇪","🇯🇵","🇲🇽","🇵🇦",][index]
-//}
-
-//This is the ViewModel
-class EmojiMemoryGame{
+//ObservableObject: reactive UI
+class EmojiMemoryGame: ObservableObject{
     private static let countries = ["🇺🇸","🇩🇴","🇨🇴","🇪🇸","🇦🇷","🇨🇦","🇨🇺","🇪🇨","🇧🇷","🇸🇻","🇺🇾","🇵🇪","🇯🇵","🇲🇽","🇵🇦",]
     
     private static func  createMemoryGame() -> MemoryGame<String> {
@@ -26,11 +21,19 @@ class EmojiMemoryGame{
         }
     }
     
-    private var model = createMemoryGame()
+    //If something change it comunicate thats why yhe ObservableObject is. and the Published
+    @Published private var model = createMemoryGame()
     
     
     var countries: Array<MemoryGame<String>.Country> {
         model.countries
+    }
+    
+    //MARK: - Intets
+    
+    func shuffle() {
+        model.shuffle()
+        
     }
     
     func choose(_ country: MemoryGame<String>.Country) {
