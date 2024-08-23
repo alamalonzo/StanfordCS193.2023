@@ -16,16 +16,18 @@ import SwiftUI
 class EmojiMemoryGame{
     private static let countries = ["🇺🇸","🇩🇴","🇨🇴","🇪🇸","🇦🇷","🇨🇦","🇨🇺","🇪🇨","🇧🇷","🇸🇻","🇺🇾","🇵🇪","🇯🇵","🇲🇽","🇵🇦",]
     
-    
-    
-    //Here you are calling for the Model as a Type and
-    //look how you specific the "String"typy in the Generic parameter
-    //1
-    //private var model: MemoryGame<String> = MemoryGame<String>(numberOfPairsOfCountries: 4, countryContentFactory: createCountryContent)
-    //2
-    private var model: MemoryGame<String> = MemoryGame(numberOfPairsOfCountries: 4) { pairIndex in
-        return countries[pairIndex]
+    private static func  createMemoryGame() -> MemoryGame<String> {
+        return MemoryGame(numberOfPairsOfCountries: 6) { pairIndex in
+            if countries.indices.contains(pairIndex){
+                return countries[pairIndex]
+            }else {
+                return "🤷🏽‍♂️"
+            }
         }
+    }
+    
+    private var model = createMemoryGame()
+    
     
     var countries: Array<MemoryGame<String>.Country> {
         model.countries
@@ -34,4 +36,5 @@ class EmojiMemoryGame{
     func choose(_ country: MemoryGame<String>.Country) {
         model.choose(country: country)
     }
+    
 }

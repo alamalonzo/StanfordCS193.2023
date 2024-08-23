@@ -19,7 +19,7 @@ struct MemoryGame<CountryContent> {
     init(numberOfPairsOfCountries: Int, countryContentFactory: (Int) -> CountryContent) {
         countries = []
         
-        for pairIndex in 0..<numberOfPairsOfCountries {
+        for pairIndex in 0..<max(2, numberOfPairsOfCountries) {
             //Funtional as types:
             // In the Init we create parameter that takes a funtions: "countryContentFactory"
             let content: CountryContent = countryContentFactory(pairIndex)
@@ -34,7 +34,7 @@ struct MemoryGame<CountryContent> {
     }
     
     struct Country {
-        var isFaceUp = false
+        var isFaceUp = true
         var isMatched = false
         let content: CountryContent
         
