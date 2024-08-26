@@ -31,34 +31,15 @@ struct MemoryGame<CountryContent> where CountryContent: Equatable {
     
     var indexOfTheOneAndOnlyFaceUpCountry: Int? {
         //compute properties
-        get {
-            
-            
-            var faceUpCountryIndices = [Int]()
-            for index in countries.indices {
-                if countries[index].isFaceUp {
-                    faceUpCountryIndices.append(index)
-                }
-            }
-            if faceUpCountryIndices.count == 1 {
-                return faceUpCountryIndices.first
-            }else{
-                return nil
-            }
+        get { countries.indices.filter { index in countries[index].isFaceUp }.only
+//            return faceUpCountryIndices.count == 1 ? faceUpCountryIndices.first : nil
         }
-        set {
-            for index in countries.indices{
-                if index == newValue {
-                    countries[index].isFaceUp = true
-                }else {
-                    countries[index].isFaceUp = false
-                }
-            }
+        set {countries.indices.forEach { countries[$0].isFaceUp = (newValue == $0)}
         }
     }
     
     mutating func choose(country: Country) {
-        //if let
+        //if let lo puedes usar en diferentes lugaraes si x y y son iguales.
         if let chosenIndex = countries.firstIndex(where: {$0.id == country.id}){
             if !countries[chosenIndex].isFaceUp && !countries[chosenIndex].isMatched {
                 if let potencialMatchIndex = indexOfTheOneAndOnlyFaceUpCountry {
@@ -66,11 +47,7 @@ struct MemoryGame<CountryContent> where CountryContent: Equatable {
                         countries[chosenIndex].isMatched = true
                         countries[potencialMatchIndex].isMatched = true
                     }
-//                    indexOfTheOneAndOnlyFaceUpCountry = nil
                 }else {
-//                    for index in countries.indices {
-//                        countries[index].isFaceUp = false
-//                    }
                     indexOfTheOneAndOnlyFaceUpCountry = chosenIndex
                 }
                 countries[chosenIndex].isFaceUp = true
@@ -79,28 +56,11 @@ struct MemoryGame<CountryContent> where CountryContent: Equatable {
           
         }
     }
-    //para eliminar esto usamos countries.firstIndex(where... ver func CHoose
-//    private func index(of country: Country) -> Int? {
-//        for index in countries.indices {
-//            if countries[index].id == country.id {
-//                return index
-//            }
-//        }
-//        return nil
-//    }
-    
     mutating func shuffle() {
         countries.shuffle()
     }
     
     struct Country: Equatable, Identifiable, CustomDebugStringConvertible {
-    
-//        //lhs == left hand side lhr: right hand side
-//        static func == (lhs: Country, rhs: Country) -> Bool {
-//            return lhs.isFaceUp == rhs.isFaceUp &&
-//            lhs.isMatched == rhs.isMatched &&
-//            lhs.content == rhs.content
-//        }
         var isFaceUp = false
         var isMatched = false
         let content: CountryContent
@@ -111,11 +71,12 @@ struct MemoryGame<CountryContent> where CountryContent: Equatable {
         var debugDescription: String {
             "\(id): \(content) \(isFaceUp ? "up" : "down") \(isMatched ? "matched" : "")"
         }
-        
-        
     }
-    
-    
-    
-    
+}
+
+extension Array {
+    //Element is a Dont care for arrays
+    var only: Element? {
+        count == 1 ? first : nil
+    }
 }
