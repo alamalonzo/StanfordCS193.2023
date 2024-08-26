@@ -15,6 +15,7 @@ struct EmojiMemoryGameView: View {
         VStack{
             ScrollView{
                 countries
+                    .animation(.default, value: viewModel.countries)
             }
             .padding()
         }
@@ -23,14 +24,19 @@ struct EmojiMemoryGameView: View {
         }
     }
     
+    
+    
     var countries: some View {
         let grid = [GridItem(.adaptive(minimum: 85), spacing: 0)]
         
         return LazyVGrid(columns: grid, spacing: 0){
-            ForEach(viewModel.countries.indices, id: \.self) { index in
-                CardView(viewModel.countries[index])
+            ForEach(viewModel.countries) { country in
+                CardView(country)
                     .aspectRatio(2/3, contentMode: .fit)
                     .padding(4)
+                    .onTapGesture {
+                        viewModel.choose(country)
+                    }
             }
         }
         .foregroundStyle(.orange)
@@ -60,6 +66,7 @@ struct CardView: View {
             base.fill()
                 .opacity(country.isFaceUp ? 0 : 1)
         }
+        .opacity(country.isFaceUp || !country.isMatched ? 1 : 0)
     }
 }
 
