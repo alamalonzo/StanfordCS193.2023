@@ -10,11 +10,14 @@ import SwiftUI
 struct EmojiMemoryGameView: View {
     //by the ViewModel
     @ObservedObject var viewModel: EmojiMemoryGame
+    private let aspectRatio: CGFloat = 2/3
+    private let spacing: CGFloat = 5
     
     var body: some View {
         VStack{
             ScrollView{
                 countries
+                    .foregroundStyle(viewModel.color)
                     .animation(.default, value: viewModel.countries)
             }
             .padding()
@@ -23,52 +26,19 @@ struct EmojiMemoryGameView: View {
             viewModel.shuffle()
         }
     }
-    
-    
-    
     var countries: some View {
-        let grid = [GridItem(.adaptive(minimum: 85), spacing: 0)]
-        
-        return LazyVGrid(columns: grid, spacing: 0){
-            ForEach(viewModel.countries) { country in
-                CardView(country)
-                    .aspectRatio(2/3, contentMode: .fit)
-                    .padding(4)
-                    .onTapGesture {
-                        viewModel.choose(country)
-                    }
-            }
+        AspectVGrid(viewModel.countries, aspectRatio: aspectRatio) { country in
+            CardView(country).padding(spacing)
+                .onTapGesture {
+                    viewModel.choose(country)
+          }
         }
-        .foregroundStyle(.orange)
         
     }
+    
+
 }
 
-struct CardView: View {
-    let country: MemoryGame<String>.Country
-    
-    init(_ country: MemoryGame<String>.Country) {
-        self.country = country
-    }
-    
-    var body: some View {
-        ZStack{
-            let base = RoundedRectangle(cornerRadius: 20)
-            Group {
-                base.fill(.white)
-                base.strokeBorder(lineWidth: 2)
-                Text(country.content)
-                    .font(.system(size: 200))
-                    .minimumScaleFactor(0.01)
-                    .aspectRatio(1, contentMode: .fit)
-            }
-                .opacity(country.isFaceUp ? 1 : 0)
-            base.fill()
-                .opacity(country.isFaceUp ? 0 : 1)
-        }
-        .opacity(country.isFaceUp || !country.isMatched ? 1 : 0)
-    }
-}
 
 
 #Preview {

@@ -9,10 +9,11 @@ import SwiftUI
 
 //ObservableObject: reactive UI
 class EmojiMemoryGame: ObservableObject{
+    typealias Card = MemoryGame<String>.Country
     private static let countries = ["🇺🇸","🇩🇴","🇨🇴","🇪🇸","🇦🇷","🇨🇦","🇨🇺","🇪🇨","🇧🇷","🇸🇻","🇺🇾","🇵🇪","🇯🇵","🇲🇽","🇵🇦",]
     
     private static func  createMemoryGame() -> MemoryGame<String> {
-        return MemoryGame(numberOfPairsOfCountries: 6) { pairIndex in
+        return MemoryGame(numberOfPairsOfCountries: 3) { pairIndex in
             if countries.indices.contains(pairIndex){
                 return countries[pairIndex]
             }else {
@@ -25,8 +26,13 @@ class EmojiMemoryGame: ObservableObject{
     @Published private var model = createMemoryGame()
     
     
-    var countries: Array<MemoryGame<String>.Country> {
+    var countries: Array<Card> {
         model.countries
+    }
+    
+    //para que se encargue del color
+    var color: Color {
+        .orange
     }
     
     //MARK: - Intets
@@ -36,7 +42,7 @@ class EmojiMemoryGame: ObservableObject{
         
     }
     
-    func choose(_ country: MemoryGame<String>.Country) {
+    func choose(_ country: Card) {
         model.choose(country: country)
     }
     

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42361FDF2C8356450006B8C1 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42361FDE2C8356450006B8C1 /* AspectVGrid.swift */; };
 		426E4FA22C7919A6006F8481 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426E4FA12C7919A6006F8481 /* EmojiMemoryGame.swift */; };
 		426E4FA42C7919AF006F8481 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426E4FA32C7919AF006F8481 /* MemoryGame.swift */; };
+		42EBEB112C85E432007F2B6E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EBEB102C85E432007F2B6E /* CardView.swift */; };
+		42EBEB132C85F2EB007F2B6E /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EBEB122C85F2EB007F2B6E /* Pie.swift */; };
+		42EBEB152C85F81D007F2B6E /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EBEB142C85F81D007F2B6E /* Cardify.swift */; };
 		42F2CCEF2C66661100F20AC0 /* StanfordCS193_2023App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F2CCEE2C66661100F20AC0 /* StanfordCS193_2023App.swift */; };
 		42F2CCF12C66661100F20AC0 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F2CCF02C66661100F20AC0 /* EmojiMemoryGameView.swift */; };
 		42F2CCF32C66661200F20AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42F2CCF22C66661200F20AC0 /* Assets.xcassets */; };
@@ -16,8 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42361FDE2C8356450006B8C1 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		426E4FA12C7919A6006F8481 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		426E4FA32C7919AF006F8481 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		42EBEB102C85E432007F2B6E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		42EBEB122C85F2EB007F2B6E /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		42EBEB142C85F81D007F2B6E /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		42F2CCEB2C66661100F20AC0 /* StanfordCS193.2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StanfordCS193.2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F2CCEE2C66661100F20AC0 /* StanfordCS193_2023App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StanfordCS193_2023App.swift; sourceTree = "<group>"; };
 		42F2CCF02C66661100F20AC0 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
@@ -36,6 +44,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42361FDD2C83561C0006B8C1 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		42F2CCE22C66661000F20AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +74,11 @@
 				426E4FA32C7919AF006F8481 /* MemoryGame.swift */,
 				426E4FA12C7919A6006F8481 /* EmojiMemoryGame.swift */,
 				42F2CCF02C66661100F20AC0 /* EmojiMemoryGameView.swift */,
+				42EBEB102C85E432007F2B6E /* CardView.swift */,
+				42EBEB142C85F81D007F2B6E /* Cardify.swift */,
+				42EBEB122C85F2EB007F2B6E /* Pie.swift */,
+				42361FDE2C8356450006B8C1 /* AspectVGrid.swift */,
+				42361FDD2C83561C0006B8C1 /* New Group */,
 				42F2CCF22C66661200F20AC0 /* Assets.xcassets */,
 				42F2CCF42C66661200F20AC0 /* Preview Content */,
 			);
@@ -145,7 +165,11 @@
 			files = (
 				42F2CCF12C66661100F20AC0 /* EmojiMemoryGameView.swift in Sources */,
 				42F2CCEF2C66661100F20AC0 /* StanfordCS193_2023App.swift in Sources */,
+				42EBEB152C85F81D007F2B6E /* Cardify.swift in Sources */,
 				426E4FA42C7919AF006F8481 /* MemoryGame.swift in Sources */,
+				42EBEB112C85E432007F2B6E /* CardView.swift in Sources */,
+				42EBEB132C85F2EB007F2B6E /* Pie.swift in Sources */,
+				42361FDF2C8356450006B8C1 /* AspectVGrid.swift in Sources */,
 				426E4FA22C7919A6006F8481 /* EmojiMemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
